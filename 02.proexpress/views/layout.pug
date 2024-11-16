@@ -1,0 +1,42 @@
+doctype html
+html
+  head
+    title= title
+    meta(charset='utf-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    link(rel='stylesheet', href='/stylesheets/main.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    div(class="flex h-screen custom-gradient")
+      div
+        div(class="h-screen w-64 p-6 border-r-[1px] border-c-border-color" )
+
+          div(class="mb-6")
+            h2(class="text-c-text-light text-xs font-thin mb-2") Favorites
+            ul
+              li(class="flex items-center rounded-lg p-2 text-sm text-c-text-med hover:bg-c-purple")
+                a(href="/") Dashboard
+              li(class="flex items-center rounded-lg p-2 text-sm text-c-text-med hover:bg-c-purple")
+                a(href="/catalog/books") Books
+              li(class="flex items-center rounded-lg p-2 text-sm text-c-text-med hover:bg-c-purple")
+                a(href="/catalog/authors") Authors
+              li(class="flex items-center rounded-lg p-2 text-sm text-c-text-med hover:bg-c-purple")
+                a(href="/catalog/genres") Genres
+              li(class="flex items-center rounded-lg p-2 text-sm text-c-text-med hover:bg-c-purple")
+                a(href="/catalog/bookinstances") Book-instances
+
+          div(class="mb-6")
+            h2(class="text-c-text-light text-xs font-thin mb-2") Main Menu
+            ul
+              li(class="flex items-center rounded-lg p-2 text-sm text-c-text-med hover:bg-c-grey-dark")
+                a(href="/") Dashboard
+              li(class="flex items-center rounded-lg p-2 text-sm text-c-text-med hover:bg-c-grey-dark")
+                a(href="/catalog/books") Books
+              li(class="flex items-center rounded-lg p-2 text-sm text-c-text-med hover:bg-c-grey-dark")
+                a(href="/catalog/authors") Authors
+              li(class="flex items-center rounded-lg p-2 text-sm text-c-text-med hover:bg-c-grey-dark")
+                a(href="/catalog/genres") Genres
+              li(class="flex items-center rounded-lg p-2 text-sm text-c-text-med hover:bg-c-grey-dark")
+                a(href="/catalog/bookinstances") Book-instances
+      div(class="flex-1 p-6")
+        block content
