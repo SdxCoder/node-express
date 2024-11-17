@@ -9,8 +9,9 @@ html
   body
     div(class="flex h-screen custom-gradient")
       div
-        div(class="h-screen w-64 p-6 border-r-[1px] border-c-border-color" )
-
+        div(class="h-screen w-64 pl-6 pr-6 border-r-[1px] border-c-border-color" )
+          div(class="h-20 flex items-center")
+            img(class="w-8 h-8 rounded-full object-cover" src="./images/logo.webp")
           div(class="mb-6")
             h2(class="text-c-text-light text-xs font-thin mb-2") Favorites
             ul
@@ -20,9 +21,9 @@ html
                 a(href="/catalog/books") Books
               li(class="flex items-center rounded-lg p-2 text-sm text-c-text-med hover:bg-c-purple")
                 a(href="/catalog/authors") Authors
-              li(class="flex items-center rounded-lg p-2 text-sm text-c-text-med hover:bg-c-purple")
+              li(class="flex items-center rounded-lg p-2 text-sm text-c-text-med hover:bg-c-grey-dark")
                 a(href="/catalog/genres") Genres
-              li(class="flex items-center rounded-lg p-2 text-sm text-c-text-med hover:bg-c-purple")
+              li(class="flex items-center rounded-lg p-2 text-sm text-c-text-med hover:bg-c-grey-dark")
                 a(href="/catalog/bookinstances") Book-instances
 
           div(class="mb-6")
@@ -38,5 +39,7 @@ html
                 a(href="/catalog/genres") Genres
               li(class="flex items-center rounded-lg p-2 text-sm text-c-text-med hover:bg-c-grey-dark")
                 a(href="/catalog/bookinstances") Book-instances
-      div(class="flex-1 p-6")
+      div(class="flex-1 pl-8 pr-6")
+        div(class="h-20 flex items-center")
+          block header
         block content
