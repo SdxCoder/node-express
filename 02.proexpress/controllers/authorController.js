@@ -5,7 +5,7 @@ import { body, validationResult } from "express-validator";
 const getAuthorsList = async function (req, res, next) {
     try {
         const authorList = await Author.find({}).exec();
-        res.render("author_list", { title: "Author List", author_list: authorList })
+        res.render("authors", { title: "Authors", author_list: authorList })
     } catch (error) {
         return next(error);
     }
@@ -13,7 +13,7 @@ const getAuthorsList = async function (req, res, next) {
 
 const createAuthorForm = async function (req, res, next) {
     try {
-        res.send('Not Implemented: Create Author Form');
+        res.render("author_form", { title: "Add Author" })
     } catch (error) {
         return next(error);
     }

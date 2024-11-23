@@ -14,6 +14,5 @@ BookSchema.virtual("url").get(function () {
     return `catalog/book/${this._id}`;
 })
 
+
 export default model('Book', BookSchema);
-
-

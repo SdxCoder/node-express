@@ -1,21 +1,23 @@
 extends layout
 
+block header 
+  p(class="text-c-text-light font-thin text-sm")=title
 block content
-  h1=title
-
   form(method='POST')
-    div.form-group
-      label(for='first_name') First Name:
-      input#first_name.form-control(type='text', placeholder='First name (Christian)' name='first_name' required value=(undefined===author ? '' : author.first_name) )
-      label(for='family_name') Family Name:
-      input#family_name.form-control(type='text', placeholder='Family name (Surname)' name='family_name' required value=(undefined===author ? '' : author.family_name))
-    div.form-group
-      label(for='date_of_birth') Date of birth:
-      input#date_of_birth.form-control(type='date', name='date_of_birth' value=(undefined===author ? '' : author.date_of_birth_yyyy_mm_dd) )
-    div.form-group
-      label(for='date_of_death') Date of death:
-      input#date_of_death.form-control(type='date', name='date_of_death' value=(undefined===author ? '' : author.date_of_death_yyyy_mm_dd) )
-    button.btn.btn-primary(type='submit') Submit
+    div(class="flex gap-3 flex-col py-2.5")
+      input(type='text' placeholder='First name' name='first_name' required value=(undefined===author ? '' : author.first_name),
+      class="w-3/12  px-4 py-2 text-c-text-dark bg-white border border-c-border-color rounded-lg focus:border-c-text-light focus:outline-none")
+  
+      input(type='text', placeholder='Family name (Surname)' name='family_name' required value=(undefined===author ? '' : author.family_name)
+      class="w-3/12  px-4 py-2 text-c-text-dark bg-white border border-c-border-color rounded-lg focus:border-c-text-light focus:outline-none")
+
+      input(type='date', name='date_of_birth' value=(undefined===author ? '' : author.dob_fomated)
+      class="w-3/12  px-4 py-2 text-c-text-dark bg-white border border-c-border-color rounded-lg focus:border-c-text-light focus:outline-none" )
+
+      input(type='date', name='date_of_death' value=(undefined===author ? '' : author.dob_fomated) 
+      class="w-3/12  px-4 py-2 text-c-text-dark bg-white border border-c-border-color rounded-lg focus:border-c-text-light focus:outline-none")
+
+      button(type="submit" class="w-36 py-2.5 rounded-lg bg-c-text-dark text-white") Submit
 
   if errors
     ul

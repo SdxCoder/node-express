@@ -1,5 +1,6 @@
 
 import { Schema, model } from "mongoose";
+import { formatDate } from "../utils/utils.js";
 
 
 const AuthorSchema = new Schema({
@@ -21,6 +22,17 @@ AuthorSchema.virtual("name").get(function () {
 AuthorSchema.virtual("url").get(function () {
     return `catalog/author/${this._id}`;
 })
+
+AuthorSchema.virtual("dob_fomated").get(function () {
+    return formatDate(this.date_of_birth);
+})
+
+AuthorSchema.virtual("dod_fomated").get(function () {
+    const date = this.date_of_death;
+    if (date === undefined) return '-';
+    return formatDate(date);
+})
+
 
 export default model('Author', AuthorSchema);
 

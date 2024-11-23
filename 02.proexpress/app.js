@@ -5,6 +5,7 @@ import connectMongose from "./db_connection.js";
 import catalogRouter from "./routes/catalogRouter.js";
 import indexRouter from "./routes/indexRouter.js";
 
+
 const app = express();
 const port = 3000;
 connectMongose().catch((err) => console.log(err));

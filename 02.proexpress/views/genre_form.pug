@@ -1,0 +1,10 @@
+extends layout
+
+block header 
+  p(class="text-c-text-light font-thin text-sm")=title
+block content
+  form(action="POST")
+    div(class="flex gap-3")
+      input(type="text" placeholder="Enter your text" 
+       class="w-3/12  px-4 py-2 text-c-text-dark bg-white border border-c-border-color rounded-lg focus:border-c-text-light focus:outline-none")
+       button(type="submit" class="w-36 rounded-lg bg-c-text-dark text-white") Submit

@@ -1,0 +1,28 @@
+extends layout
+
+block header 
+  p(class="text-c-text-light font-thin text-sm")=title
+block content
+  a(href='book/create')
+    button(type="submit" class="w-36 py-2.5 rounded-lg bg-c-text-dark text-white mb-2")
+     | Add
+  div(class="overflow-x-auto bg-white shadow-lg rounded-lg")
+    table(class="min-w-full table-auto")
+      thead(class="bg-c-purple text-c-text-med text-base font-medium")
+        tr()
+          th(class="py-3 px-6 text-left") Title
+          th(class="py-3 px-6 text-left") Author
+          th(class="py-3 px-6 text-left") ISBN
+          th(class="py-3 px-6 text-left") Genre
+      tbody(class="text-c-text-light text-base")
+        if book_list.length
+          each book in book_list
+            tr(class="border-b hover:hover:bg-gray-50")
+              td(class="py-3 px-6") 
+                a(href=`${book.url}`) #{book.title}
+              td(class="py-3 px-6") 
+                a(href=`${book.author.url}`) #{book.author.name}
+              td(class="py-3 px-6") #{book.isbn}
+              td(class="py-3 px-6") #{book.genre.map((e) => e.name).join(', ')}
+        else 
+          p="There are no books."

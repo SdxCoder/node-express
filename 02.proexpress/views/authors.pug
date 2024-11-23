@@ -1,0 +1,25 @@
+extends layout
+
+block header 
+  p(class="text-c-text-light font-thin text-sm")=title
+block content
+  a(href='author/create')
+    button(class="w-36 py-2.5 rounded-lg bg-c-text-dark text-white mb-2")
+     | Add
+  div(class="overflow-x-auto bg-white shadow-lg rounded-lg")
+    table(class="min-w-full table-auto")
+      thead(class="bg-c-purple text-c-text-med text-base font-medium")
+        tr()
+          th(class="py-3 px-6 text-left") Name
+          th(class="py-3 px-6 text-left") Date of Birth
+          th(class="py-3 px-6 text-left") Date of Death
+      tbody(class="text-c-text-light text-base")
+        if author_list.length
+          each author in author_list
+            tr(class="border-b hover:hover:bg-gray-50")
+              td(class="py-3 px-6") 
+                a(href=`${author.url}`) #{author.name}
+              td(class="py-3 px-6") #{author.dob_fomated}
+              td(class="py-3 px-6") #{author.dod_fomated}
+        else 
+          p="There are no authors."
