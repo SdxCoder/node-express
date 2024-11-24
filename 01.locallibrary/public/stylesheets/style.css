@@ -1,8 +1,4 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+.custom-gradient {
+  background-image: linear-gradient(to bottom right, #edd7f1,#eee3f5, #fffeff 22%);
 }
 
-a {
-  color: #00B7FF;
-}
