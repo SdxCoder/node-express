@@ -1,6 +1,6 @@
 extends layout
 
-block header 
+block header
   p(class="text-c-text-light font-thin text-sm")=title
 block content
   form(method='POST')
@@ -11,13 +11,13 @@ block content
       input(type='text', placeholder='Family name (Surname)' name='family_name' required value=(undefined===author ? '' : author.family_name)
       class="w-3/12  px-4 py-2 text-c-text-dark bg-white border border-c-border-color rounded-lg focus:border-c-text-light focus:outline-none")
 
-      input(type='date', name='date_of_birth' value=(undefined===author ? '' : author.dob_fomated)
+      input(type='date', name='date_of_birth' value=(undefined===author ? '' : author.dob_formated)
       class="w-3/12  px-4 py-2 text-c-text-dark bg-white border border-c-border-color rounded-lg focus:border-c-text-light focus:outline-none" )
 
-      input(type='date', name='date_of_death' value=(undefined===author ? '' : author.dob_fomated) 
+      input(type='date', name='date_of_death' value=(undefined===author ? '' : author.dod_formated) 
       class="w-3/12  px-4 py-2 text-c-text-dark bg-white border border-c-border-color rounded-lg focus:border-c-text-light focus:outline-none")
 
-      button(type="submit" class="w-36 py-2.5 rounded-lg bg-c-text-dark text-white") Submit
+      button(type="submit" class="w-36 py-2.5 rounded-lg bg-c-text-dark text-white") #{btnText}
 
   if errors
     ul

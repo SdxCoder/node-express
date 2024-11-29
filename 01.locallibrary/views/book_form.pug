@@ -3,13 +3,33 @@ extends layout
 block header 
   p(class="text-c-text-light font-thin text-sm")=title
 block content
-  form(action="POST")
+  form(method="POST")
     div(class="flex flex-col gap-3")
-       input(type="text" placeholder="Book Title" name="title" required
+       input(type="text" placeholder="Book Title" name="title" required value=(book === undefined ? '' : book.title)
        class="w-3/12  px-4 py-2 text-c-text-dark bg-white border border-c-border-color rounded-lg focus:border-c-text-light focus:outline-none")
        select(type="text" name="author" required 
        class="w-3/12  px-4 py-2 text-c-text-dark bg-white border border-c-border-color rounded-lg focus:border-c-text-light focus:outline-none")
-         option(value='' ) Select author
-       textarea(type="text" placeholder="Summary" name="summary" rows=10
-       class="w-full px-4 py-2 text-c-text-dark bg-white border border-c-border-color rounded-lg focus:border-c-text-light focus:outline-none resize-none")
-       button(type="submit" class="w-36 py-2.5 rounded-lg bg-c-text-dark text-white") Submit
+          option(value='') Select author
+          each author in authors
+            if book && book.author && book.author._id.toString()===author._id.toString()
+              option(value=author._id selected) #{author.name}
+            else 
+              option(value=author._id) #{author.name}
+       each genre in genres
+          div(class="flex gap-2")
+            if genre.checked
+              input(type="checkbox", name="genre", value=genre._id, id=genre._id, checked)
+            else 
+              input(type="checkbox", name="genre", value=genre._id, id=genre._id)
+            label(for=genre._id) &nbsp;#{genre.name}
+       input(type="text" placeholder="ISBN" name="isbn" value=(book === undefined ? '': book.isbn)
+       class="w-3/12  px-4 py-2 text-c-text-dark bg-white border border-c-border-color rounded-lg focus:border-c-text-light focus:outline-none")
+       textarea(type="text" placeholder="Summary" required name="summary" rows=10
+       class="w-full px-4 py-2 text-c-text-dark bg-white border border-c-border-color rounded-lg focus:border-c-text-light focus:outline-none resize-none") 
+        | #{book === undefined ? '' : book.summary}
+       button(type="submit" class="w-36 py-2.5 rounded-lg bg-c-text-dark text-white")  #{book === undefined ? "Submit" : "Update"}
+
+  if errors
+    ul
+      for error in errors
+        li!= error.msg

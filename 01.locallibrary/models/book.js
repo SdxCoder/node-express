@@ -11,8 +11,12 @@ const BookSchema = new Schema({
 });
 
 BookSchema.virtual("url").get(function () {
-    return `catalog/book/${this._id}`;
+    return `/catalog/book/${this._id}`;
 })
+
+function contains(value) {
+    return genre.includes(value);
+}
 
 
 export default model('Book', BookSchema);

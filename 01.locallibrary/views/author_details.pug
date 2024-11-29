@@ -1,0 +1,14 @@
+extends layout
+include list_tile
+block header
+  p(class="text-c-text-light font-thin text-sm")=title
+block content
+  p(class="text-c-text-dark font-black mb-4") Author Details
+  +list_tile('Name', `${author.name}`)
+  if author.dob_formated != null
+    +list_tile('Date of Birth', `${author.dob_formated}`)
+  if author.dod_formated != null
+    +list_tile('Date of Death', `${author.dod_formated}`)
+  if books.length
+    +list_tile('Books', `${books.map((e) => e.title).join(', ')}`)
+  

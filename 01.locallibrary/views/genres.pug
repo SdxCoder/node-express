@@ -1,10 +1,12 @@
 extends layout
-
+include floating_btn
 block header 
   p(class="text-c-text-light font-thin text-sm")=title
 block content
-  each item in genre_list
-    div(class="inline-flex items-center bg-c-purple text-sm font-medium px-2.5 py-0.5 rounded mr-1") 
-      | #{item.name}
+  +floating_btn("genre/create")
+  div(class="mb-2")
+    each item in genre_list
+      div(class="inline-flex items-center bg-c-purple text-sm font-medium px-2.5 py-0.5 rounded mr-1") 
+        | #{item.name}
       
 

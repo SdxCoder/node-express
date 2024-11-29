@@ -1,12 +1,9 @@
 
 
-function formatDate(date) {
-    const formatter = new Intl.DateTimeFormat('en-US', {
-        year: 'numeric',
-        month: 'short',
-        day: 'numeric',
-    });
-    return formatter.format(date);
+function formatDate(dateStr) {
+    if (dateStr === null) return null;
+    const date = new Date(dateStr);
+    return date.toISOString().split('T')[0];
 }
 
 export { formatDate }

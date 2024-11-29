@@ -32,8 +32,12 @@ block content
               td(class="py-3 px-6") 
                 a(href=`${book.url}`) #{book.title}
               td(class="py-3 px-6") 
-                a(href=`${book.author.url}`) #{book.author.name}
+                if book.author != null
+                    a(href=`${book.author.url}`) #{book.author.name}
+                else 
+                  p="--"
               td(class="py-3 px-6") #{book.isbn}
-              td(class="py-3 px-6") #{book.genre.map((e) => e.name).join(', ')}
+              if book.genre && book.genre.length > 0
+                td(class="py-3 px-6") #{book.genre.map((e) => e.name).join(', ')}
         else 
           p="There are no books."

@@ -18,21 +18,17 @@ AuthorSchema.virtual("name").get(function () {
     return fullname;
 });
 
-
 AuthorSchema.virtual("url").get(function () {
-    return `catalog/author/${this._id}`;
-})
+    return `/catalog/author/${this._id}`;
+});
 
-AuthorSchema.virtual("dob_fomated").get(function () {
+AuthorSchema.virtual("dob_formated").get(function () {
     return formatDate(this.date_of_birth);
-})
+});
 
-AuthorSchema.virtual("dod_fomated").get(function () {
-    const date = this.date_of_death;
-    if (date === undefined) return '-';
-    return formatDate(date);
-})
-
+AuthorSchema.virtual("dod_formated").get(function () {
+    return formatDate(this.date_of_death);
+});
 
 export default model('Author', AuthorSchema);
 

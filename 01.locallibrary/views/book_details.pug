@@ -1,0 +1,13 @@
+extends layout
+include list_tile
+block header
+  p(class="text-c-text-light font-thin text-sm")=title
+block content
+  p(class="text-c-text-dark font-black mb-4") Book Details
+  +list_tile('Title', `${book.title}`)
+  +list_tile('ISBN', `${book.isbn}`)
+  +list_tile('Summary', `${book.summary}`)
+  if book.author !== null
+    +list_tile('Author', `${book.author.name}`)
+  if book.genre.length
+    +list_tile('Genre', `${book.genre.map((e) => e.name).join(', ')}`)
