@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { createAuthorForm, getAuthorsList, createAuthor, getAuthorDetails, updateAuthor, getUpdateAuthorForm, deleteAuthor } from "../controllers/authorController.js";
-import { getGenresList } from "../controllers/genreController.js";
+import { createGenre, getGenreForm, getGenresList } from "../controllers/genreController.js";
 import { getCreateBookForm, createBook, getBooksList, getBookDetails, getUpdateBookForm, updateBook, deleteBook } from "../controllers/bookController.js";
 
 const router = Router();
@@ -20,6 +20,8 @@ router
     .get('/book/:id/update', getUpdateBookForm)
     .post('/book/:id/update', updateBook)
     .post('/book/:id/delete', deleteBook)
+    .get('/genre/create', getGenreForm)
+    .post('/genre/create', createGenre)
     .get('/genres', getGenresList);
 
 export default router;

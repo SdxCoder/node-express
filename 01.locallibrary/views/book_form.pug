@@ -1,5 +1,4 @@
 extends layout
-
 block header 
   p(class="text-c-text-light font-thin text-sm")=title
 block content
@@ -15,13 +14,16 @@ block content
               option(value=author._id selected) #{author.name}
             else 
               option(value=author._id) #{author.name}
-       each genre in genres
-          div(class="flex gap-2")
-            if genre.checked
-              input(type="checkbox", name="genre", value=genre._id, id=genre._id, checked)
-            else 
-              input(type="checkbox", name="genre", value=genre._id, id=genre._id)
-            label(for=genre._id) &nbsp;#{genre.name}
+       div(class="border rounded-lg px-4 py-2")
+        p(class="mb-2") Select Genre
+        div(class="flex flex-wrap gap-2")
+          each genre in genres
+              div(class="px-2 py-1 border rounded-lg")
+                if genre.checked
+                  input(type="checkbox", name="genre", value=genre._id, id=genre._id, checked class="accent-purple-500")
+                else 
+                  input(type="checkbox", name="genre", value=genre._id, id=genre._id class="accent-purple-500")
+                label(for=genre._id ) &nbsp;#{genre.name}
        input(type="text" placeholder="ISBN" name="isbn" value=(book === undefined ? '': book.isbn)
        class="w-3/12  px-4 py-2 text-c-text-dark bg-white border border-c-border-color rounded-lg focus:border-c-text-light focus:outline-none")
        textarea(type="text" placeholder="Summary" required name="summary" rows=10

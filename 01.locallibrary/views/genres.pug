@@ -4,9 +4,10 @@ block header
   p(class="text-c-text-light font-thin text-sm")=title
 block content
   +floating_btn("genre/create")
-  div(class="mb-2")
+  div(class="flex flex-wrap gap-2")
     each item in genre_list
-      div(class="inline-flex items-center bg-c-purple text-sm font-medium px-2.5 py-0.5 rounded mr-1") 
-        | #{item.name}
+      div(class="flex border rounded-lg items-center text-sm font-medium") 
+        p(class="px-2") #{item.name}  
+        button(class="border-l-[1px] p-2 material-symbols-outlined hover:bg-c-grey-dark") close 
       
 
