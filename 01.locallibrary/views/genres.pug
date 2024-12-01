@@ -1,13 +1,15 @@
 extends layout
 include floating_btn
+include modal
 block header 
   p(class="text-c-text-light font-thin text-sm")=title
 block content
   +floating_btn("genre/create")
+  +modal()
   div(class="flex flex-wrap gap-2")
-    each item in genre_list
+    each genre in genre_list
       div(class="flex border rounded-lg items-center text-sm font-medium") 
-        p(class="px-2") #{item.name}  
-        button(class="border-l-[1px] p-2 material-symbols-outlined hover:bg-c-grey-dark") close 
+        p(class="px-2") #{genre.name}  
+        button(onclick="openModal('" + `${genre.url}/delete` + "')"
+        class="border-l-[1px] p-2 material-symbols-outlined hover:bg-c-grey-dark") close 
       
-

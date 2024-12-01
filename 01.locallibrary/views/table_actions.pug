@@ -4,6 +4,6 @@ mixin table_actions(viewUrl, updateUrl, deletUrl)
       span.material-symbols-outlined visibility
     a(href=updateUrl)
       span.material-symbols-outlined edit
-    button(class="deleteButton" onclick="openModal('" + deletUrl + "')" )
+    button(onclick="openModal('" + deletUrl + "')" )
       span.material-symbols-outlined.text-red-500 delete
     +modal()

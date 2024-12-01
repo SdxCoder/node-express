@@ -26,20 +26,20 @@ const createGenre = [
     body("genres")
         .trim()
         .isLength({ min: 3 })
-        .escape()
         .withMessage('Genre must be specified'),
     async function (req, res, next) {
         try {
             const errors = validationResult(req);
-            const genre = new Genre({
-                name: req.body.genres,
-            });
+            const genres = req.body.genres.split(',').map((e) => new Genre({
+                name: e.trim()
+            }));
+
             if (!errors.isEmpty()) {
                 res.render("genre_form", { title: "Create genre", genre: genre, errors: errors.array() });
                 return;
             }
             else {
-                await genre.save();
+                await Genre.insertMany(genres)
                 res.redirect(`/catalog/genres`);
                 console.log(`Genre is saved successfully`);
             }
@@ -49,21 +49,14 @@ const createGenre = [
     }
 ]
 
-const updateGenre = async function (req, res, next) {
-    try {
-        res.send('Not Implemented: Update genre');
-    } catch (error) {
-        return next(error);
-    }
-}
-
 const deleteGenre = async function (req, res, next) {
     try {
-        res.send('Not Implemented: Delete genre');
+        await Genre.findByIdAndDelete(req.params.id);
+        res.redirect('/catalog/genres');
     } catch (error) {
         return next(error);
     }
 }
 
 
-export { getGenresList, createGenre, getGenreForm, updateGenre, deleteGenre };
+export { getGenresList, createGenre, getGenreForm, deleteGenre };
