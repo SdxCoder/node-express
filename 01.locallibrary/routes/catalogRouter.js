@@ -2,6 +2,7 @@ import { Router } from "express";
 import { createAuthorForm, getAuthorsList, createAuthor, getAuthorDetails, updateAuthor, getUpdateAuthorForm, deleteAuthor } from "../controllers/authorController.js";
 import { createGenre, getGenreForm, getGenresList, deleteGenre } from "../controllers/genreController.js";
 import { getCreateBookForm, createBook, getBooksList, getBookDetails, getUpdateBookForm, updateBook, deleteBook } from "../controllers/bookController.js";
+import { getBookInstancesList, deleteBookInstnace, getBookInstanceDetails } from "../controllers/bookInstanceController.js";
 
 const router = Router();
 
@@ -23,7 +24,10 @@ router
     .get('/genre/create', getGenreForm)
     .post('/genre/create', createGenre)
     .post('/genre/:id/delete', deleteGenre)
-    .get('/genres', getGenresList);
+    .get('/genres', getGenresList)
+    .get('/bookinstances', getBookInstancesList)
+    .post('/bookinstance/:id/delete', deleteBookInstnace)
+    .get('/bookinstance/:id', getBookInstanceDetails);
 
 export default router;
 

@@ -21,7 +21,8 @@ const getAuthorDetails = async function (req, res, next) {
         const books = await Book.find({ author: author.id });
         if (author === null) {
             const err = new Error('Author not found.');
-            res.next(err);
+            err.status = 400;
+            return res.next(err);
         }
         res.render("author_details", { title: "Author Detail", author: author, books: books })
     } catch (error) {

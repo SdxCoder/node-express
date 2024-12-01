@@ -1,0 +1,16 @@
+extends layout
+include list_tile
+block header
+  p(class="text-c-text-light font-thin text-sm")=title
+block content
+  p(class="text-c-text-dark font-black mb-4") Instance
+  +list_tile('Status', `${book_instance.status}`)
+  +list_tile('Imprint', `${book_instance.imprint}`)
+  p(class="text-c-text-dark font-black my-4") Book Details
+  +list_tile('Title', `${book_instance.book.title}`)
+  +list_tile('ISBN', `${book_instance.book.isbn}`)
+  +list_tile('Summary', `${book_instance.book.summary}`)
+  if book_instance.book.author !== null
+    +list_tile('Author', `${book_instance.book.author.name}`)
+  if book_instance.book.genre.length
+    +list_tile('Genre', `${book_instance.book.genre.map((e) => e.name).join(', ')}`)

@@ -1,6 +1,9 @@
 extends layout
 
+block header 
+  p(class="text-c-text-light font-thin text-sm")=title
 block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+  div(class="flex w-full h-[80%] items-center justify-center")
+    div(class="flex items-center flex-col gap-4")
+      p #{message}
+      button(onclick="goBack()" class="w-36 py-2.5 rounded-lg bg-c-text-dark text-white") Go Back

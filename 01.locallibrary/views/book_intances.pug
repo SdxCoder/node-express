@@ -1,0 +1,31 @@
+extends layout
+include floating_btn
+include table_actions
+include modal
+block header 
+  p(class="text-c-text-light font-thin text-sm")=title
+block content
+  +floating_btn("bookinstance/create")
+  if book_instances.length
+    div(class="overflow-x-auto bg-white shadow-lg rounded-lg")
+      table(class="min-w-full table-auto")
+        thead(class="bg-c-purple text-c-text-med text-base font-medium")
+          tr()
+            th(class="py-3 px-6 text-left") Book Title
+            th(class="py-3 px-6 text-left") Imprint
+            th(class="py-3 px-6 text-left") Status
+            th(class="w-36 py-3 px-6") Actions
+        tbody(class="text-c-text-light text-base")
+            each bookinstnace in book_instances
+              tr(class="border-b hover:hover:bg-gray-50")
+                td(class="py-3 px-6") 
+                  if bookinstnace.book
+                     a(href=`${bookinstnace.book.url}`) #{bookinstnace.book.title}
+                td(class="py-3 px-6") #{bookinstnace.imprint}
+                td(class="py-3 px-6") #{bookinstnace.status}
+                td(class="py-3 px-6")
+                    +table_actions(bookinstnace.url, `${bookinstnace.url}/update`, `${bookinstnace.url}/delete` ) 
+  else 
+    div(class="flex justify-center items-center w-full h-[80%]")
+      p="There are no book instances."
+  div(class="pt-24")

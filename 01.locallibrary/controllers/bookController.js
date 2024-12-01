@@ -1,4 +1,5 @@
 import Book from '../models/book.js';
+import BookInstance from '../models/bookinstance.js';
 import Author from '../models/author.js';
 import Genre from '../models/genre.js';
 import { body, validationResult } from 'express-validator';
@@ -133,7 +134,8 @@ const getBookDetails = async function (req, res, next) {
         const book = await Book.findById(req.params.id).populate('author').populate('genre').exec();
         if (book === null) {
             const err = new Error('Author not found.');
-            res.next(err);
+            err.status = 400;
+            return res.next(err);
         }
         res.render("book_details", { title: "Book Detail", book: book })
     } catch (error) {
@@ -143,6 +145,11 @@ const getBookDetails = async function (req, res, next) {
 
 const deleteBook = async function (req, res, next) {
     try {
+        const bookInstances = await BookInstance.find({ book: req.params.id }).exec();
+        if (bookInstances.length > 0) {
+            res.render('error', { title: 'Book Instance', message: 'Book instance exist against this book. Cannot delete this item' })
+            return;
+        }
         await Book.findByIdAndDelete(req.params.id);
         res.redirect('/catalog/books');
     } catch (error) {
